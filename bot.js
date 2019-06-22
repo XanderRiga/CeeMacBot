@@ -1,10 +1,16 @@
 const tmi = require('tmi.js');
+const rp = require('request-promise');
+const $ = require('cheerio');
+const htt = require('cheerio-html-to-text');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Define configuration options
 const opts = {
   identity: {
     username: "CeeMacBot",
-    password: ""
+    password: process.env.PASSWORD
   },
   channels: [
     "CeeMac"
@@ -13,6 +19,8 @@ const opts = {
 
 // Create a client with our options
 const client = new tmi.client(opts);
+
+const rank_url = "https://mlb19.theshownation.com/universal_profiles/Collinmccann_/online?fbclid=IwAR185-2gNUSvW5ESeGLJVClG5fNXkavP-S6vDgtEsTmjany-qwTLWuHQvcE";
 
 // Register our event handlers (defined below)
 client.on('message', onMessageHandler);
@@ -28,20 +36,71 @@ function onMessageHandler (target, context, msg, self) {
   // Remove whitespace from chat message
   const commandName = msg.trim();
 
+  if (!commandName.startsWith('!')) {
+    return;
+  }
+
   console.log(`* Attempting to execute ${commandName} command`);
   // If the command is known, let's execute it
   switch (commandName) {
     case '!dice':
       rollDice(target);
       break;
+    case '!rating':
+      rating(target);
+      break;
     default:
       console.log(`* Unknown command ${commandName}`);
   }
 }
 
+// Function called when the "rank" command is issued
+function rating(target) {
+  rp(rank_url)
+    .then(html => {
+      const html_text = htt.convert(html);
+      index = html_text.lastIndexOf("Fort Worth") + 10;
+
+      let rating = html_text.substring(
+        index,
+        index + 5
+      );
+      rating = rating.split(' ').join('');
+      client.say(target, `CeeMac is currently in ${getRankName(rating)}, his rating is: ${parseInt(rating)}`);
+    }).catch(err => {
+      console.log(`error while getting rank: ${err}`);
+      client.say(target, `Whoops, something went wrong getting CeeMac's rank. Please try again later.`);
+    })
+}
+
+function getRankName(rating) {
+  switch (true) {
+    case rating >= 900:
+      return 'World Series';
+      break;
+    case rating >= 800:
+      return 'Championship Series';
+      break;
+    case rating >= 700:
+      return 'Division Series';
+      break;
+    case rating >= 600:
+      return 'Wild Card';
+      break;
+    case rating >= 500:
+      return 'Pennant Race';
+      break;
+    case rating >= 400:
+      return 'All Star';
+      break;
+    default:
+      return 'Garbage Tier'
+  }
+}
+
 // Function called when the "dice" command is issued
 function rollDice (target) {
-  var roll = Math.floor(Math.random() * 6) + 1;
+  let roll = Math.floor(Math.random() * 6) + 1;
   client.say(target, `You rolled a ${roll}`);
 }
 
