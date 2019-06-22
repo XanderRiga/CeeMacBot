@@ -28,12 +28,11 @@ function onMessageHandler (target, context, msg, self) {
   // Remove whitespace from chat message
   const commandName = msg.trim();
 
+  console.log(`* Attempting to execute ${commandName} command`);
   // If the command is known, let's execute it
   switch (commandName) {
     case '!dice':
-      const num = rollDice();
-      client.say(target, `You rolled a ${num}`);
-      console.log(`* Executed ${commandName} command`);
+      rollDice(target);
       break;
     default:
       console.log(`* Unknown command ${commandName}`);
@@ -41,9 +40,9 @@ function onMessageHandler (target, context, msg, self) {
 }
 
 // Function called when the "dice" command is issued
-function rollDice () {
-  const sides = 6;
-  return Math.floor(Math.random() * sides) + 1;
+function rollDice (target) {
+  var roll = Math.floor(Math.random() * 6) + 1;
+  client.say(target, `You rolled a ${roll}`);
 }
 
 // Called every time the bot connects to Twitch chat
