@@ -1,0 +1,29 @@
+{
+  "name": "ceemacbot",
+  "version": "1.0.0",
+  "description": "The bot for Twitch.tv/CeeMac",
+  "main": "bot.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cheerio-html-to-text": "^0.4.4",
+    "dotenv": "^8.0.0",
+    "puppeteer": "^1.18.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "tmi.js": "^1.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XanderRiga/CeeMacBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XanderRiga/CeeMacBot/issues"
+  },
+  "homepage": "https://github.com/XanderRiga/CeeMacBot#readme"
+}
