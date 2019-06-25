@@ -20,7 +20,7 @@ const opts = {
 // Create a client with our options
 const client = new tmi.client(opts);
 
-const rank_url = "https://mlb19.theshownation.com/universal_profiles/Collinmccann_/online?fbclid=IwAR185-2gNUSvW5ESeGLJVClG5fNXkavP-S6vDgtEsTmjany-qwTLWuHQvcE";
+const rank_url = "https://mlb19.theshownation.com/universal_profiles/CeeMacTTV/online?fbclid=IwAR0DSFITijdSwctXUHjEIXdWWSOBNu361eyxE3hLR7uRh6q5YbEZD0Mjr78";
 
 // Register our event handlers (defined below)
 client.on('message', onMessageHandler);
