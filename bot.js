@@ -108,7 +108,7 @@ function getRankName(rating) {
 
 function dinger_strings() {
   return [
-    "HE HIT IT HIGHHHHHH, HE HITS IT DEEEEEEEP. IT. IS. OUTTA HERE!!!",
+    "HE HITS IT HIGHHHHHH, HE HITS IT DEEEEEEEP. IT. IS. OUTTA HERE!!!",
     "BACK BACK BACK BACK BACK BACK GONE!!",
     "And boom goes the dynamite."
   ]
