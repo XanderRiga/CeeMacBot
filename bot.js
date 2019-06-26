@@ -58,7 +58,7 @@ function onMessageHandler (target, context, msg, self) {
 }
 
 function dinger(target) {
-  let response = dinger_strings()[Math.floor(Math.random() * dinger_strings.length)];
+  let response = dinger_strings()[Math.floor(Math.random() * dinger_strings().length)];
   client.say(target, response);
 }
 
