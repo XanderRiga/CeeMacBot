@@ -49,9 +49,17 @@ function onMessageHandler (target, context, msg, self) {
     case '!rating':
       rating(target);
       break;
+    case '!dinger':
+      dinger(target);
+      break;
     default:
       console.log(`* Unknown command ${commandName}`);
   }
+}
+
+function dinger(target) {
+  let response = dinger_strings()[Math.floor(Math.random() * dinger_strings.length)];
+  client.say(target, response);
 }
 
 // Function called when the "rank" command is issued
@@ -96,6 +104,14 @@ function getRankName(rating) {
     default:
       return 'Garbage Tier'
   }
+}
+
+function dinger_strings() {
+  return [
+    "HE HIT IT HIGHHHHHH, HE HITS IT DEEEEEEEP. IT. IS. OUTTA HERE!!!",
+    "BACK BACK BACK BACK BACK BACK GONE!!",
+    "And boom goes the dynamite."
+  ]
 }
 
 // Function called when the "dice" command is issued
