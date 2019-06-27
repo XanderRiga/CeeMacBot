@@ -110,7 +110,8 @@ function dinger_strings() {
   return [
     "HE HITS IT HIGHHHHHH, HE HITS IT DEEEEEEEP. IT. IS. OUTTA HERE!!!",
     "BACK BACK BACK BACK BACK BACK GONE!!",
-    "And boom goes the dynamite."
+    "JESUS CHRIST! IS THAT GUY ON ROIDS??",
+    "That one is heading to splash city!!!"
   ]
 }
 
