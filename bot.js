@@ -111,7 +111,8 @@ function dinger_strings() {
     "HE HITS IT HIGHHHHHH, HE HITS IT DEEEEEEEP. IT. IS. OUTTA HERE!!!",
     "BACK BACK BACK BACK BACK BACK GONE!!",
     "JESUS CHRIST! IS THAT GUY ON ROIDS??",
-    "That one is heading to splash city!!!"
+    "That one is heading to splash city!!!",
+    "HE MUST BE HITTING LEAVES CUZ THIS MAN IS RAKING"
   ]
 }
 
